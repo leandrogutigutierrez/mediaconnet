@@ -5,10 +5,14 @@ import User from '@/models/User';
 import Opportunity from '@/models/Opportunity';
 import Application from '@/models/Application';
 
-// ─── Only runs in development ─────────────────────────────────────────────────
-export async function GET() {
+// ─── Protected seed endpoint ──────────────────────────────────────────────────
+export async function GET(request: Request) {
   if (process.env.NODE_ENV === 'production') {
-    return NextResponse.json({ error: 'Seed not available in production' }, { status: 403 });
+    const { searchParams } = new URL(request.url);
+    const secret = searchParams.get('secret');
+    if (secret !== 'mediaconnet2026') {
+      return NextResponse.json({ error: 'Seed not available in production' }, { status: 403 });
+    }
   }
 
   await connectDB();
