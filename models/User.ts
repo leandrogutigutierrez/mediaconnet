@@ -83,7 +83,8 @@ UserSchema.index({ name: 'text', bio: 'text', skills: 'text', career: 'text' });
 // Never return the hashed password in JSON output
 UserSchema.set('toJSON', {
   transform(_doc, ret) {
-    delete ret.password;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (ret as any).password = undefined;
     return ret;
   },
 });
