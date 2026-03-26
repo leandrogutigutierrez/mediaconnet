@@ -57,7 +57,8 @@ export function MessageThread({ partner }: MessageThreadProps) {
         )}
 
         {messages.map((msg, idx) => {
-          const isMe = msg.sender._id === user?._id || msg.sender === user?._id;
+          const senderId = typeof msg.sender === 'string' ? msg.sender : msg.sender._id?.toString();
+          const isMe = senderId === user?._id?.toString();
           const showDate = idx === 0 ||
             new Date(msg.createdAt).toDateString() !==
             new Date(messages[idx - 1].createdAt).toDateString();
