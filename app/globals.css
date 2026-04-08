@@ -14,19 +14,19 @@
   }
 
   body {
-    background-color: #05090C;
-    color: #F0F4F8;
+    background-color: #030A14;
+    color: #EFF6FF;
     min-height: 100dvh;
   }
 
   /* Scrollbar */
   ::-webkit-scrollbar       { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: #0D1520; }
-  ::-webkit-scrollbar-thumb { background: #1A2840; border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: #00E676; }
+  ::-webkit-scrollbar-track { background: #071828; }
+  ::-webkit-scrollbar-thumb { background: #0F2843; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #F5B800; }
 
   /* Selection */
-  ::selection { background: rgba(0, 230, 118, 0.25); color: #fff; }
+  ::selection { background: rgba(245, 184, 0, 0.22); color: #fff; }
 }
 
 @layer utilities {
@@ -43,21 +43,27 @@
     overflow: hidden;
   }
 
-  /* Green neon text */
-  .text-neon {
-    color: #00E676;
-    text-shadow: 0 0 20px rgba(0, 230, 118, 0.5);
+  /* USC Gold accent text */
+  .text-gold {
+    color: #F5B800;
+    text-shadow: 0 0 20px rgba(245, 184, 0, 0.45);
   }
 
-  /* Glass card */
+  /* USC Blue accent text */
+  .text-usc {
+    color: #1D6FD8;
+    text-shadow: 0 0 16px rgba(29, 111, 216, 0.4);
+  }
+
+  /* Glass card (navy-tinted) */
   .glass {
-    background: rgba(13, 21, 32, 0.7);
+    background: rgba(7, 24, 40, 0.72);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(26, 40, 64, 0.8);
+    border: 1px solid rgba(15, 40, 67, 0.85);
   }
 
-  /* Gradient border */
+  /* Gradient border (gold + blue) */
   .border-gradient {
     border: 1px solid transparent;
     background-clip: padding-box;
@@ -68,7 +74,23 @@
     position: absolute;
     inset: -1px;
     border-radius: inherit;
-    background: linear-gradient(135deg, rgba(0,230,118,0.4), rgba(0,184,212,0.2));
+    background: linear-gradient(135deg, rgba(245,184,0,0.4), rgba(29,111,216,0.25));
     z-index: -1;
+  }
+
+  /* USC badge pill */
+  .badge-usc {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(0, 32, 91, 0.5);
+    border: 1px solid rgba(29, 111, 216, 0.35);
+    color: #93C5FD;
   }
 }

@@ -12,22 +12,22 @@ interface OpportunityCardProps {
 }
 
 const categoryColors: Record<string, 'primary' | 'purple' | 'teal' | 'warning' | 'default'> = {
-  video:        'primary',
-  photography:  'teal',
+  video:          'primary',
+  photography:    'teal',
   'social-media': 'purple',
-  branding:     'warning',
-  animation:    'purple',
-  journalism:   'teal',
-  podcast:      'default',
-  documentary:  'primary',
-  advertising:  'warning',
-  other:        'default',
+  branding:       'warning',
+  animation:      'purple',
+  journalism:     'teal',
+  podcast:        'default',
+  documentary:    'primary',
+  advertising:    'warning',
+  other:          'default',
 };
 
 const modalityIcons: Record<string, React.ReactNode> = {
-  remote:   <Wifi    size={12} />,
-  'on-site': <MapPin size={12} />,
-  hybrid:   <MapPin  size={12} />,
+  remote:    <Wifi    size={12} />,
+  'on-site': <MapPin  size={12} />,
+  hybrid:    <MapPin  size={12} />,
 };
 
 export function OpportunityCard({ opportunity }: OpportunityCardProps) {
@@ -35,7 +35,7 @@ export function OpportunityCard({ opportunity }: OpportunityCardProps) {
 
   return (
     <Link href={`/opportunities/${opportunity._id}`}>
-      <Card hover className="h-full flex flex-col">
+      <Card hover className="h-full flex flex-col group">
         {/* Company header */}
         <div className="flex items-start gap-3 mb-3">
           <Avatar
@@ -44,17 +44,17 @@ export function OpportunityCard({ opportunity }: OpportunityCardProps) {
             size="sm"
           />
           <div className="flex-1 min-w-0">
-            <p className="text-xs text-slate-500 truncate">
+            <p className="text-xs text-content-subtle truncate font-medium uppercase tracking-wide">
               {company?.companyName ?? company?.name}
             </p>
-            <h3 className="font-semibold text-slate-900 text-sm leading-tight line-clamp-2">
+            <h3 className="font-semibold text-content-primary text-sm leading-snug line-clamp-2 mt-0.5 group-hover:text-primary-400 transition-colors">
               {opportunity.title}
             </h3>
           </div>
         </div>
 
         {/* Description */}
-        <p className="text-sm text-slate-600 flex-1 leading-relaxed">
+        <p className="text-sm text-content-muted flex-1 leading-relaxed">
           {truncate(opportunity.description, 100)}
         </p>
 
@@ -71,7 +71,7 @@ export function OpportunityCard({ opportunity }: OpportunityCardProps) {
         )}
 
         {/* Footer meta */}
-        <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2 text-xs text-slate-500">
+        <div className="mt-4 pt-3 border-t border-border flex items-center justify-between gap-2 text-xs text-content-subtle">
           <div className="flex items-center gap-3">
             <Badge variant={categoryColors[opportunity.category] ?? 'default'}>
               {opportunity.category}
@@ -98,7 +98,7 @@ export function OpportunityCard({ opportunity }: OpportunityCardProps) {
 
         {/* Deadline warning */}
         {opportunity.deadline && (
-          <p className="mt-1 text-xs text-amber-600">
+          <p className="mt-1.5 text-xs text-primary-500 font-medium">
             Deadline: {formatDate(opportunity.deadline)}
           </p>
         )}
